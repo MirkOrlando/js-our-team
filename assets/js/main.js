@@ -112,15 +112,19 @@ const inputRoleElement = document.getElementById("role");
 const inputImageElement = document.getElementById("image");
 // const btnAddElement = document.querySelector("btn");
 // 2. al click del bottone invoco una funzione (addEventListener)
-formElement.addEventListener("submit", () => {
+formElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+  // console.log(inputNameElement.value);
   const nameNewMember = inputNameElement.value;
   const roleNewMember = inputRoleElement.value;
   const imageNewMember = inputImageElement.value;
-  const member = {
-    name: nameNewMember,
-    role: roleNewMember,
-    image: imageNewMember,
-  };
+  console.log(nameNewMember, roleNewMember, imageNewMember);
+  const member = {};
+  member.name = nameNewMember;
+  member.role = roleNewMember;
+  member.image = imageNewMember;
+  console.log("Hai cliccato su Add");
+  console.log(member);
   generateCard(member);
 });
 

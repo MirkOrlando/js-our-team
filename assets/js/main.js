@@ -38,6 +38,16 @@ const team = [
 ];
 /* MILESTONE 1 (da fare entro le 18):
 stampare su console le informazioni di nome, ruolo e la stringa della foto */
+// 1. scorrere l'array per individuare i dati del singolo membro
+for (let i = 0; i < team.length; i++) {
+  const member = team[i];
+  // console.log(member);
+  // 2. stampare in console ogni dato
+  console.log(`MEMBER ${i}`);
+  console.log(member.name);
+  console.log(member.role);
+  console.log(member.image);
+}
 
 /* MILESTONE 2 (se ce la fai falla entro le 18 altrimenti puoi consegnare anche dopo le 18 - easy):
 stampare le stesse informazioni su DOM sottoforma di stringhe */

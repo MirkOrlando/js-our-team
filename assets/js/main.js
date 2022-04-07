@@ -123,11 +123,23 @@ formElement.addEventListener("submit", (event) => {
   member.name = nameNewMember;
   member.role = roleNewMember;
   member.image = imageNewMember;
-  console.log("Hai cliccato su Add");
-  console.log(member);
+  // console.log("Hai cliccato su Add");
+  // console.log(member);
   generateCard(member);
+
+  /*   console.log(team.includes(member));
+  team.push(member);
+ */
+  /* if (!team.includes(member)) {
+    console.log(team);
+    generateCard(member);
+  } */
 });
 
+/**
+ * Generates a card
+ * @param {object} object An object with the following keywords: name, role, image
+ */
 function generateCard(object) {
   // 3. creare un contenitore (card) per ogni membro
   const cardElement = generateElementWithAttribute("div", "class", "card", "");
@@ -174,6 +186,14 @@ function generateCard(object) {
   containerElement.append(cardElement);
 }
 
+/**
+ * Generate an element with an attribute
+ * @param {string} tagName a string value that indicates the HTML element to be created
+ * @param {string} attributeName a string value that indicates the attribute to be set to the new element
+ * @param {string} attributeValue a string value that indicates the value to assign to the new element's attribute
+ * @param {string} innerText a string value that will be written in the new element (if no needed set '')
+ * @returns An element with an attribute set to be appended
+ */
 function generateElementWithAttribute(
   tagName,
   attributeName,

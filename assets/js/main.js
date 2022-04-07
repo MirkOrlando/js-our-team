@@ -68,14 +68,13 @@ for (let i = 0; i < team.length; i++) {
 
 /* BONUS 1 (solo se non sei giá frustrato dalle milestone 1 e 2):
 trasformare la stringa foto in una immagine effettiva */
-// 1. inizializzare la variabile del contenitore del DOM
+/* // 1. inizializzare la variabile del contenitore del DOM
 const containerElement = document.querySelector(".container");
 // 2. ciclare l'array per individuare i dati del singolo membro
 for (let i = 0; i < team.length; i++) {
   const member = team[i];
   // 3. creare un contenitore (card) per ogni membro
   const cardElement = document.createElement("div");
-  cardElement.setAttribute("class", "card");
   // 4. creo degli elementi nella DOM per contenere i singoli dati di ogni membro
   const memberImageContainerElement = document.createElement("div");
   const memberImageElement = document.createElement("img");
@@ -92,7 +91,39 @@ for (let i = 0; i < team.length; i++) {
   cardElement.append(memberRoleElement);
   // 7. stampare a schermo le informazioni di ogni membro sottoforma di stringa
   containerElement.append(cardElement);
-}
+} */
 
 /* BONUS 2 (solo se non sei giá fuso):
 organizzare i singoli membri in card/schede */
+
+// 1. inizializzare la variabile del contenitore del DOM
+const containerElement = document.querySelector(".container");
+// 2. ciclare l'array per individuare i dati del singolo membro
+for (let i = 0; i < team.length; i++) {
+  const member = team[i];
+  // 3. creare un contenitore (card) per ogni membro
+  const cardElement = document.createElement("div");
+  cardElement.setAttribute("class", "card");
+  const cardBodyElement = document.createElement("div");
+  cardBodyElement.setAttribute("class", "card_body");
+  // 4. creo degli elementi nella DOM per contenere i singoli dati di ogni membro
+  const memberImageContainerElement = document.createElement("div");
+  memberImageContainerElement.setAttribute("class", "member_image");
+  const memberImageElement = document.createElement("img");
+  memberImageElement.setAttribute("src", `./assets/img/${member.image}`);
+  const memberNameElement = document.createElement("div");
+  memberNameElement.setAttribute("class", "member_name");
+  const memberRoleElement = document.createElement("div");
+  memberRoleElement.setAttribute("class", "member_role");
+  // 5. appendere i dati del membre nel proprio contenitore
+  memberImageContainerElement.append(memberImageElement);
+  memberNameElement.append(`${member.name}`);
+  memberRoleElement.append(`${member.role}`);
+  cardBodyElement.append(memberNameElement);
+  cardBodyElement.append(memberRoleElement);
+  // 6. appendere alla card i dati del membro
+  cardElement.append(memberImageContainerElement);
+  cardElement.append(cardBodyElement);
+  // 7. stampare a schermo le informazioni di ogni membro sottoforma di stringa
+  containerElement.append(cardElement);
+}

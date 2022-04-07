@@ -19,7 +19,40 @@ p {
   text-align: center;
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   width: 1200px;
   margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card {
+  width: calc(100% / 4);
+  border-radius: 20px;
+  background-color: rgb(173 216 230 / 10%);
+}
+
+.card_body {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.member_image {
+  padding: 0.5rem;
+}
+
+.member_image img {
+  border-radius: 20px;
+}
+
+.member_name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }

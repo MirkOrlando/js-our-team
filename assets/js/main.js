@@ -38,7 +38,7 @@ const team = [
 ];
 /* MILESTONE 1 (da fare entro le 18):
 stampare su console le informazioni di nome, ruolo e la stringa della foto */
-// 1. scorrere l'array per individuare i dati del singolo membro
+// 1. ciclare l'array per individuare i dati del singolo membro
 for (let i = 0; i < team.length; i++) {
   const member = team[i];
   // console.log(member);
@@ -51,6 +51,20 @@ for (let i = 0; i < team.length; i++) {
 
 /* MILESTONE 2 (se ce la fai falla entro le 18 altrimenti puoi consegnare anche dopo le 18 - easy):
 stampare le stesse informazioni su DOM sottoforma di stringhe */
+// 1. inizializzare la variabile del contenitore del DOM
+const containerElement = document.querySelector(".container");
+// 2. ciclare l'array per individuare i dati del singolo membro
+for (let i = 0; i < team.length; i++) {
+  const member = team[i];
+  // 3. creare un contenitore (card) per ogni membro
+  const cardElement = document.createElement("div");
+  // 4. appendere alla card i dati del membro
+  cardElement.append(
+    `IMAGE ${member.image} - NAME ${member.name} - ROLE ${member.role}`
+  );
+  // 5. stampare a schermo le informazioni di ogni membro sottoforma di stringa
+  containerElement.append(cardElement);
+}
 
 /* BONUS 1 (solo se non sei giá frustrato dalle milestone 1 e 2):
 trasformare la stringa foto in una immagine effettiva */

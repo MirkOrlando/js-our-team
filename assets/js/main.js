@@ -101,24 +101,66 @@ const containerElement = document.querySelector(".container");
 // 2. ciclare l'array per individuare i dati del singolo membro
 for (let i = 0; i < team.length; i++) {
   const member = team[i];
+  generateCard(member);
+}
+
+/* permetti all'utente di inserire un nuovo membre utilizzando un form */
+// 1. inizializzo una variabile per il form, per gli input
+const formElement = document.querySelector("form");
+const inputNameElement = document.getElementById("name");
+const inputRoleElement = document.getElementById("role");
+const inputImageElement = document.getElementById("image");
+// const btnAddElement = document.querySelector("btn");
+// 2. al click del bottone invoco una funzione (addEventListener)
+formElement.addEventListener("submit", () => {
+  const nameNewMember = inputNameElement.value;
+  const roleNewMember = inputRoleElement.value;
+  const imageNewMember = inputImageElement.value;
+  const member = {
+    name: nameNewMember,
+    role: roleNewMember,
+    image: imageNewMember,
+  };
+  generateCard(member);
+});
+
+function generateCard(object) {
   // 3. creare un contenitore (card) per ogni membro
-  const cardElement = document.createElement("div");
-  cardElement.setAttribute("class", "card");
-  const cardBodyElement = document.createElement("div");
-  cardBodyElement.setAttribute("class", "card_body");
+  const cardElement = generateElementWithAttribute("div", "class", "card", "");
+  const cardBodyElement = generateElementWithAttribute(
+    "div",
+    "class",
+    "card_body",
+    ""
+  );
   // 4. creo degli elementi nella DOM per contenere i singoli dati di ogni membro
-  const memberImageContainerElement = document.createElement("div");
-  memberImageContainerElement.setAttribute("class", "member_image");
-  const memberImageElement = document.createElement("img");
-  memberImageElement.setAttribute("src", `./assets/img/${member.image}`);
-  const memberNameElement = document.createElement("div");
-  memberNameElement.setAttribute("class", "member_name");
-  const memberRoleElement = document.createElement("div");
-  memberRoleElement.setAttribute("class", "member_role");
-  // 5. appendere i dati del membre nel proprio contenitore
+  const memberImageContainerElement = generateElementWithAttribute(
+    "div",
+    "class",
+    "member_image",
+    ""
+  );
+  const memberImageElement = generateElementWithAttribute(
+    "img",
+    "src",
+    `./assets/img/${object.image}`,
+    ""
+  );
+  const memberNameElement = generateElementWithAttribute(
+    "div",
+    "class",
+    "member_name",
+    object.name
+  );
+  //console.log(memberNameElement);
+  const memberRoleElement = generateElementWithAttribute(
+    "div",
+    "class",
+    "member_role",
+    object.role
+  );
+  // 5. appendere i dati del membro nel proprio contenitore
   memberImageContainerElement.append(memberImageElement);
-  memberNameElement.append(`${member.name}`);
-  memberRoleElement.append(`${member.role}`);
   cardBodyElement.append(memberNameElement);
   cardBodyElement.append(memberRoleElement);
   // 6. appendere alla card i dati del membro
@@ -126,4 +168,16 @@ for (let i = 0; i < team.length; i++) {
   cardElement.append(cardBodyElement);
   // 7. stampare a schermo le informazioni di ogni membro sottoforma di stringa
   containerElement.append(cardElement);
+}
+
+function generateElementWithAttribute(
+  tagName,
+  attributeName,
+  attributeValue,
+  innerText
+) {
+  const domElement = document.createElement(tagName);
+  domElement.setAttribute(attributeName, attributeValue);
+  domElement.append(innerText);
+  return domElement;
 }

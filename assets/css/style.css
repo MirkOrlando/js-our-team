@@ -10,11 +10,13 @@ body {
   color: lightgray;
 }
 
-h2 {
+h2,
+h3 {
   text-transform: uppercase;
 }
 
 h2,
+h3,
 p {
   text-align: center;
 }
@@ -32,6 +34,37 @@ img {
   gap: 2rem;
 }
 
+.container_form {
+  width: 1200px;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+.input_container {
+  padding: 0.5rem 0;
+}
+
+.action {
+  padding-top: 1rem;
+}
+
+label,
+input {
+  display: block;
+}
+
+label {
+  font-size: 0.75rem;
+  padding-bottom: 0.25rem;
+}
+
+input {
+  width: 400px;
+  height: 2rem;
+  padding: 0.25rem;
+}
+
 .card {
   width: calc(100% / 4);
   border-radius: 20px;
@@ -41,6 +74,10 @@ img {
 .card_body {
   text-align: center;
   padding: 1rem 0;
+}
+
+.btn {
+  padding: 0.5rem 5rem;
 }
 
 .member_image {

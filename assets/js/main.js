@@ -51,7 +51,7 @@ for (let i = 0; i < team.length; i++) {
 
 /* MILESTONE 2 (se ce la fai falla entro le 18 altrimenti puoi consegnare anche dopo le 18 - easy):
 stampare le stesse informazioni su DOM sottoforma di stringhe */
-// 1. inizializzare la variabile del contenitore del DOM
+/* // 1. inizializzare la variabile del contenitore del DOM
 const containerElement = document.querySelector(".container");
 // 2. ciclare l'array per individuare i dati del singolo membro
 for (let i = 0; i < team.length; i++) {
@@ -64,10 +64,35 @@ for (let i = 0; i < team.length; i++) {
   );
   // 5. stampare a schermo le informazioni di ogni membro sottoforma di stringa
   containerElement.append(cardElement);
-}
+} */
 
 /* BONUS 1 (solo se non sei giá frustrato dalle milestone 1 e 2):
 trasformare la stringa foto in una immagine effettiva */
+// 1. inizializzare la variabile del contenitore del DOM
+const containerElement = document.querySelector(".container");
+// 2. ciclare l'array per individuare i dati del singolo membro
+for (let i = 0; i < team.length; i++) {
+  const member = team[i];
+  // 3. creare un contenitore (card) per ogni membro
+  const cardElement = document.createElement("div");
+  cardElement.setAttribute("class", "card");
+  // 4. creo degli elementi nella DOM per contenere i singoli dati di ogni membro
+  const memberImageContainerElement = document.createElement("div");
+  const memberImageElement = document.createElement("img");
+  const memberNameElement = document.createElement("div");
+  const memberRoleElement = document.createElement("div");
+  // 5. appendere i dati del membre nel proprio contenitore
+  memberImageElement.setAttribute("src", `./assets/img/${member.image}`);
+  memberImageContainerElement.append(memberImageElement);
+  memberNameElement.append(`${member.name}`);
+  memberRoleElement.append(`${member.role}`);
+  // 6. appendere alla card i dati del membro
+  cardElement.append(memberImageContainerElement);
+  cardElement.append(memberNameElement);
+  cardElement.append(memberRoleElement);
+  // 7. stampare a schermo le informazioni di ogni membro sottoforma di stringa
+  containerElement.append(cardElement);
+}
 
 /* BONUS 2 (solo se non sei giá fuso):
 organizzare i singoli membri in card/schede */

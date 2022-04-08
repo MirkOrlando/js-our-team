@@ -113,7 +113,7 @@ form .alert {
   justify-content: center;
   align-items: center;
   height: 2.5rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   color: rgb(42, 165, 79);
   background-color: rgb(129, 239, 153);
   border: 1px solid rgb(90, 200, 125);

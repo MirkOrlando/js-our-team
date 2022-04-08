@@ -43,10 +43,10 @@ for (let i = 0; i < team.length; i++) {
   const member = team[i];
   // console.log(member);
   // 2. stampare in console ogni dato
-  console.log(`MEMBER ${i}`);
-  console.log(member.name);
-  console.log(member.role);
-  console.log(member.image);
+  for (const key in member) {
+    console.log(`${key}: ${member[key]}`);
+  }
+  console.log("-------------------------------------------------------");
 }
 
 /* MILESTONE 2 (se ce la fai falla entro le 18 altrimenti puoi consegnare anche dopo le 18 - easy):
@@ -97,39 +97,53 @@ for (let i = 0; i < team.length; i++) {
 organizzare i singoli membri in card/schede */
 
 // 1. inizializzare la variabile del contenitore del DOM
-const containerElement = document.querySelector(".container");
+const memberContainerElement = document.querySelector(".team");
 // 2. ciclare l'array per individuare i dati del singolo membro
 for (let i = 0; i < team.length; i++) {
   const member = team[i];
   generateCard(member);
 }
 
-/* permetti all'utente di inserire un nuovo membre utilizzando un form */
+/* permetti all'utente di inserire un nuovo membro utilizzando un form */
 // 1. inizializzo una variabile per il form, per gli input
 const formElement = document.querySelector("form");
-const inputNameElement = document.getElementById("name");
-const inputRoleElement = document.getElementById("role");
-const inputImageElement = document.getElementById("image");
+// const inputNameElement = document.getElementById("name");
+// const inputRoleElement = document.getElementById("role");
+// const inputImageElement = document.getElementById("image");
 // const btnAddElement = document.querySelector("btn");
 // 2. al click del bottone invoco una funzione (addEventListener)
 formElement.addEventListener("submit", (event) => {
   event.preventDefault();
+  console.log(event);
   // console.log(inputNameElement.value);
-  const nameNewMember = inputNameElement.value;
-  const roleNewMember = inputRoleElement.value;
-  const imageNewMember = inputImageElement.value;
-  console.log(nameNewMember, roleNewMember, imageNewMember);
-  const member = {};
-  member.name = nameNewMember;
-  member.role = roleNewMember;
-  member.image = imageNewMember;
+  const name = event.target.name.value;
+  const role = event.target.role.value;
+  const image = event.target.image.value;
+  console.log(name, role, image);
+  const member = {
+    name,
+    role,
+    image,
+  };
+
   // console.log("Hai cliccato su Add");
-  // console.log(member);
+  console.log(member);
+  team.push(member);
   generateCard(member);
 
+  event.target.name.value = "";
+  event.target.role.value = "";
+  event.target.image.value = "";
+
+  const successAlertElement = document.querySelector(".alert");
+  successAlertElement.style.display = "flex";
+  successAlertElement.innerText = `Hai aggiunto ${member.name} con successo!`;
+  setTimeout(() => {
+    successAlertElement.style.display = "none";
+  }, 2000);
+
   /*   console.log(team.includes(member));
-  team.push(member);
- */
+   */
   /* if (!team.includes(member)) {
     console.log(team);
     generateCard(member);
@@ -138,7 +152,7 @@ formElement.addEventListener("submit", (event) => {
 
 /**
  * Generates a card
- * @param {object} object An object with the following keywords: name, role, image
+ * @param {object} object An object with the following properties: name, role, image
  */
 function generateCard(object) {
   // 3. creare un contenitore (card) per ogni membro
@@ -183,7 +197,7 @@ function generateCard(object) {
   cardElement.append(memberImageContainerElement);
   cardElement.append(cardBodyElement);
   // 7. stampare a schermo le informazioni di ogni membro sottoforma di stringa
-  containerElement.append(cardElement);
+  memberContainerElement.append(cardElement);
 }
 
 /**
